@@ -1,0 +1,23 @@
+28 - NA
+27 - .25v - ~50khz - up - pretty random
+26 - .27v to .53v - up - pretty random (.25v when off)
+25 - .29v - down - pretty random
+24 - .48v to .73v - down pretty random
+23 - .23v - up - pretty random
+22 - .75v to 1v - up - pretty random
+21 - NA
+20 - .94v, (0.27 when off)
+19 - .94v, (0.27 when off)
+18 - NA (ribbon different)
+17 - NA (ribbon different)
+16 - .3v (even when off)
+15 - .22v (even when off)
+14 - NA
+13 - NA
+12 - NA
+11 - NA
+10 - NA 
+9 - NA
+8 - NA
+7 - NA
+6 - 0v to .22v - packet - 1.8hz or so, lots of short, then 3 long 

@@ -1,0 +1,16 @@
+inputs
+4
+xor
+0
+1
+box
+3
+4
+2
+3
+outputs
+3
+8
+9
+10
+end
