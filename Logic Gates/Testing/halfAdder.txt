@@ -1,0 +1,13 @@
+inputs
+2
+and
+0
+1
+xor
+0
+1
+outputs
+2
+2
+3
+end

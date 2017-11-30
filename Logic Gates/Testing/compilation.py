@@ -116,6 +116,13 @@ for i in toDelete:
     del gate[i]
     del in1[i]
     del in2[i]
+    for x in range(i,len(gate)):
+        if(gateNum[x]>=i):
+            gateNum[x]=gateNum[x]-1
+        if(in1[x]>=i):
+            in1[x]=in1[x]-1
+        if(in2[x]>=i):
+            in2[x]=in2[x]-1
 
 print(gate)
 print(gateNum)
