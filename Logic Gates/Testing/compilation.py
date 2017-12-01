@@ -7,8 +7,27 @@ gate = []
 in1 = []
 in2 = []
 out = []
+gateNum = []
 
 basicGates = ['and','or','xor','xnor','not','nand']
+
+def printAll():
+    longest = 0
+    num = len(gate)
+    for i in gate:
+        if(len(i)>longest):
+            longest = len(i)
+    for i in range(num):
+        print((longest-len(gate[i]))*' '+gate[i]+', ',end='')
+    print()
+    for i in range(num):
+        print((longest-len(str(gateNum[i])))*' '+str(gateNum[i])+', ',end='')
+    print()
+    for i in range(num):
+        print((longest-len(str(in1[i])))*' '+str(in1[i])+', ',end='')    
+    print()
+    for i in range(num):
+        print((longest-len(str(in2[i])))*' '+str(in2[i])+', ',end='')   
 
 def compileModule(fileName, currentNum):        #Recursive function
 
@@ -63,7 +82,6 @@ def compileModule(fileName, currentNum):        #Recursive function
 fileName = "system.txt"
 compileModule(fileName, 0)
 
-gateNum = []
 for i in range(len(gate)):
     gateNum.append(i)
 
@@ -128,5 +146,8 @@ print(gate)
 print(gateNum)
 print(in1)
 print(in2)
+
+print()
+printAll()
     
 #Find gates to delete, then recover numbers after each deletion
