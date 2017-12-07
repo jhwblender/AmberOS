@@ -6,6 +6,7 @@
 gate = []
 in1 = []
 in2 = []
+out = []
 gateNum = []
 
 basicGates = ['and','or','xor','xnor','not','nand']
@@ -29,9 +30,8 @@ def printAll():
         print((longest-len(str(in2[i])))*' '+str(in2[i])+', ',end='') #in 2
     print("\n")
 
-def compileModule(fileName, currentNum, inGates): #Recursive function
-    outGates = []
-    
+def compileModule(fileName, currentNum):        #Recursive function
+
     def readLine():
                 return myFile.readline()[:-1]
 
@@ -50,34 +50,36 @@ def compileModule(fileName, currentNum, inGates): #Recursive function
             gate.append(line)
             in1.append(readNum()+currentNum)
             in2.append(readNum()+currentNum)
-            
+            out.append(0)
         elif(line == 'inputs'):                 #Inputs
-            if(fileName=="System.txt"):
+            if(currentNum == 0):
                 for i in range(readNum()):
                     gate.append("input")
                     in1.append(0)
                     in2.append(0)
+                    out.append(0)
             else:
-                for i in range(readNum()):
-                    gate.append("output")
-                    in1.append(inGates[i])
-                    in2.append(0)
+                currentNum-=readNum() #changed this
                 
         elif(line == 'outputs'):                #Output
-            if(fileName=="system.txt"):
-                for i in readNum():
-                    gate.append("output")
-                    in1.append(readNum())
-                    in2.append(0)
-            else:
-                for i in readNum():
-                    outGates.append(ReadNum())
+            for i in range(readNum()):
+                gate.append("output")
+                in1.append(readNum()+currentNum)
+                in2.append(0)
+                out.append(0)
                 
         elif(line == '' or line == 'end'):      #End of module
+            currentNum-=1
             break
         
         else:                                   #Custom Module (recursion happens here)
-            currentNum = compileModule(line+'.txt', len(gate), outGates)
+            for i in range(readNum()):
+                gate.append("output")
+                in1.append(readNum()+currentNum)
+                in2.append(0)
+                out.append(0)
+            currentNum = compileModule(line+'.txt', len(gate))
+        #currentNum+=1
         
     print("Closing "+fileName)
     myFile.close()
@@ -85,7 +87,7 @@ def compileModule(fileName, currentNum, inGates): #Recursive function
 
 #fileName = input("full file name: ")
 fileName = "system.txt"
-compileModule(fileName, 0, [])
+compileModule(fileName, 0)
 
 for i in range(len(gate)):
     gateNum.append(i)
