@@ -1,0 +1,14 @@
+inputs
+3
+myAnd
+2
+1
+2
+myOr
+2
+0
+3
+outputs
+1
+4
+end

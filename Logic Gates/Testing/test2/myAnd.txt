@@ -1,0 +1,9 @@
+inputs
+2
+and
+0
+1
+outputs
+1
+2
+end

@@ -2,6 +2,10 @@
 #White Blaze Architecture Compilation
 #11/29/17
 
+#Figured out the problem. When you have a module reading from 2 DIFFERENT
+#Modules than the 'currentNum' gets off for the inputs.... maybe... I might be
+#wrong, it seems to work for test2
+
 # --------------------- READING AND ORGINIZING FILES ---------------------
 gate = []
 in1 = []
@@ -29,8 +33,12 @@ def printAll():
         print((longest-len(str(in2[i])))*' '+str(in2[i])+', ',end='') #in 2
     print("\n")
 
-def compileModule(fileName, currentNum, inGates): #Recursive function
+def compileModule(fileName, currentNum, inGates, pastNum): #Recursive function
+    print("Incoming Gates: ", end = "")
+    print(inGates)
+    
     outGates = []
+    numInputs = 0
     
     def readLine():
                 return myFile.readline()[:-1]
@@ -48,36 +56,48 @@ def compileModule(fileName, currentNum, inGates): #Recursive function
         print ("line: "+line)
         if(line in basicGates):                 #Basic Gates
             gate.append(line)
-            in1.append(readNum()+currentNum)
-            in2.append(readNum()+currentNum)
+            first = readNum()
+            second = readNum()
+            if(first>numInputs):              #Something's broken here
+                in1.append(first+currentNum)
+            else:
+                in1.append(inGates[first])
+            if(second>numInputs):
+                in2.append(second+currentNum)
+            else:
+                in2.append(inGates[second])
             
         elif(line == 'inputs'):                 #Inputs
-            if(fileName=="System.txt"):
-                for i in range(readNum()):
+            if(fileName=="system.txt"):
+                numInputs = readNum()
+                if(numInputs != len(inGates)):
+                    print("ERROR: inputs/outputs mismatch")
+                for i in range(numInputs):
                     gate.append("input")
                     in1.append(0)
                     in2.append(0)
             else:
-                for i in range(readNum()):
-                    gate.append("output")
-                    in1.append(inGates[i])
-                    in2.append(0)
+                currentNum-=readNum()
                 
         elif(line == 'outputs'):                #Output
             if(fileName=="system.txt"):
-                for i in readNum():
+                for i in range(readNum()):
                     gate.append("output")
                     in1.append(readNum())
                     in2.append(0)
             else:
-                for i in readNum():
-                    outGates.append(ReadNum())
+                for i in range(readNum()):
+                    outGates.append(readNum())
                 
         elif(line == '' or line == 'end'):      #End of module
             break
         
         else:                                   #Custom Module (recursion happens here)
-            currentNum = compileModule(line+'.txt', len(gate), outGates)
+            outGates = []
+            for i in range(readNum()):
+                outGates.append(readNum())
+            currentNum = compileModule(line+'.txt', len(gate), outGates, currentNum)
+            
         
     print("Closing "+fileName)
     myFile.close()
@@ -85,7 +105,7 @@ def compileModule(fileName, currentNum, inGates): #Recursive function
 
 #fileName = input("full file name: ")
 fileName = "system.txt"
-compileModule(fileName, 0, [])
+compileModule(fileName, 0, [], 0)
 
 for i in range(len(gate)):
     gateNum.append(i)
@@ -95,7 +115,7 @@ printAll()
 
 #------------------------------- CLEANING ARRAYS -------------------------
 #this is mostly to get rid of all the extra outputs as well as make the gates ints from strings
-
+"""
 #finding output gates to delete
 toDelete = []
 for i in gateNum:
@@ -145,6 +165,7 @@ for i in toDelete:
 
 print()
 printAll()
+"""
 input()
     
 #Find gates to delete, then recover numbers after each deletion
