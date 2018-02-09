@@ -1,9 +1,14 @@
 inputs
+3
+xor
+1
 2
-or
+xor
 0
-1
+3
 outputs
-1
+3
+4
+3
 2
 end
