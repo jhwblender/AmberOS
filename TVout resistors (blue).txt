@@ -1,2 +1,3 @@
-1k ohm = 200 ohm x5 series
-470 ohm = 200 ohm x2 series + 200 ohm x3 parallel
+Sync  (pin 9) - 1k ohm = 200 ohm x5 series
+Video (pin 7) - 470 ohm = 200 ohm x2 series + 200 ohm x3 parallel
+
