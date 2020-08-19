@@ -1,21 +1,27 @@
-1. function(inputs)(outputs)
-2. primitive type (kinda like classes/structure)
-   = obj = {key: value, key: value, name: 'jesse', age: 20, gender: 'm'}
-   = obj.name // == 'jesse 
-3. don't have to declare type, but need to say "var myVar"
-4. comments always //, /* */
-5. loose or strict syntax, but must be consistant 
-	- line at top of file to tell which option
-5.5 you can define the base of all primitives (advanced level)
-6. bitwise operators (bitSet, bitClear) byteX = 0b00000000 or byte x = 0x0000
-7. byte variables - see above
-8. ----- deep deep down, boolean vars combined for space efficiency (compiler optimizations)
-9. pure fraction primitive type i.e var x = 5/6; x+= 1/6;
-	- would have an estimate funciton i.e x = 1/5; x.est() would return .20000
-10. Can have a token override config file i.e user can override syntax (parser job)
-11. don't mix up operators and standardized syntax
-12. very discriptive error messages (line #)
-13. predictive compiler errors (see's newline without semi-colon, close bracket based on indentation)
-14. Consistancy for loosely typed objects (i.e. 234[1] = 3, hello[2] = 'l')
-15. Index array primitive type, acts like int, but rolls around. always has [operation]%size
-16. if, elif, finally, else //finally would be true if any one of the if/elif statements were true
+1.  function(inputs)(outputs), multiple outputs
+1.5 duplicate functions ex. rectangle(float width, float height) and rectangle(float radius, float skew)
+2.  primitive type (kinda like classes/structs)
+    = obj = {key: value, key: value, name: 'jesse', age: 20, gender: 'm'}
+    = obj.name // == 'jesse 
+2.5 String primitive
+3.  don't have to declare type, but need to say "var myVar"
+4.  comments always //, /* */
+5.  loose or strict syntax, but must be consistant 
+ 	- line at top of file to tell which option
+5.5  you can define the base of all primitives (advanced level)
+6.  bitwise operators (bitSet, bitClear) byteX = 0b00000000 or byte x = 0x0000
+7.  byte variables - see above
+8.  ----- deep deep down, boolean vars combined for space efficiency (compiler optimizations)
+9.  pure fraction primitive type i.e var x = 5/6; x+= 1/6;
+ 	- would have an estimate funciton i.e x = 1/5; x.est() would return .20000
+10.  Can have a token override config file i.e user can override syntax (parser job)
+11.  don't mix up operators and standardized syntax
+12.  very discriptive error messages (line #)
+13.  predictive compiler errors (see's newline without semi-colon, close bracket based on indentation)
+14.  Consistancy for loosely typed objects (i.e. 234[1] = 3, hello[2] = 'l')
+15.  Index array primitive type, acts like int, but rolls around. always has [operation]%size
+16.  if, elif, finally, else //finally would be true if any one of the if/elif statements were true
+17.  default values on parameters/outputs, ex. doThing(int x, int y, int z = 0)
+18.  operator overloading i.e. +,-,*
+19.  when something equals something else, can set it to be a copy or pointer
+20.  functions without parenthesis can be passed in as parameters like variables.
